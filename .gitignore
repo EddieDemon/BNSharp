@@ -2,5 +2,8 @@
 bin
 obj
 
+# User setting
+*.suo
+
 # mstest test results
 TestResults

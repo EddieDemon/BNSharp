@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Comments Namespace="BNSharp.BattleNet.Friends">
+    <summary>
+        The BNSharp.BattleNet.Friends namespace contains types that have a high degree of domain specificity to Battle.net friends lists and activites.
+    </summary>
+</Comments>

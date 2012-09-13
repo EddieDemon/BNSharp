@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2D02D43C-BC3B-41D2-9226-4E215939107F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BNSharp</RootNamespace>
+    <AssemblyName>BNSharp</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS;CODE_ANALYSIS;JINXBOT;BNSHARP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRules>
+    </CodeAnalysisRules>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>BNSharp.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>Migrated rules for BNSharp.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;JINXBOT;BNSHARP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountCreationEventArgs.cs" />
+    <Compile Include="AccountCreationFailedEventArgs.cs" />
+    <Compile Include="BaseEventArgs.cs" />
+    <Compile Include="BattleNetSettingsErrorsException.cs" />
+    <Compile Include="BattleNet\AdChangedEventArgs.cs" />
+    <Compile Include="BattleNet\BattleNetClient.WarcraftProfiles.cs" />
+    <Compile Include="BattleNet\Clans\ClanRankChangeEventArgs.cs" />
+    <Compile Include="BattleNet\Clans\ClanRankChangeStatus.cs" />
+    <Compile Include="BattleNet\Gateway.cs" />
+    <Compile Include="BattleNet\JoinMethod.cs" />
+    <Compile Include="BattleNet\Stats\ArrangedTeamRecord.cs" />
+    <Compile Include="BattleNet\Stats\ArrangedTeamType.cs" />
+    <Compile Include="BattleNet\BattleNetClient.Clan.cs" />
+    <Compile Include="BattleNet\BattleNetClient.cs" />
+    <Compile Include="BattleNet\BattleNetClient.CustomParsers.cs" />
+    <Compile Include="BattleNet\BattleNetClient.ErrorHandling.cs" />
+    <Compile Include="BattleNet\BattleNetClient.Events.cs" />
+    <Compile Include="BattleNet\BattleNetClient.EventSink.cs" />
+    <Compile Include="BattleNet\BattleNetClient.Friends.cs" />
+    <Compile Include="BattleNet\BattleNetClient.Listen.cs" />
+    <Compile Include="BattleNet\BattleNetClient.ParseData.cs" />
+    <Compile Include="BattleNet\ChatUser.cs" />
+    <Compile Include="BattleNet\Clans\ClanCandidatesSearchEventArgs.cs" />
+    <Compile Include="BattleNet\Clans\ClanCandidatesSearchStatus.cs" />
+    <Compile Include="BattleNet\Clans\ClanChieftanChangeEventArgs.cs" />
+    <Compile Include="BattleNet\Clans\ClanChieftanChangeResult.cs" />
+    <Compile Include="BattleNet\Clans\ClanDisbandEventArgs.cs" />
+    <Compile Include="BattleNet\Clans\ClanFormationEventArgs.cs" />
+    <Compile Include="BattleNet\Clans\ClanFormationInvitationEventArgs.cs" />
+    <Compile Include="BattleNet\Clans\ClanInvitationEventArgs.cs" />
+    <Compile Include="BattleNet\Clans\ClanInvitationResponse.cs" />
+    <Compile Include="BattleNet\Clans\ClanInvitationResponseEventArgs.cs" />
+    <Compile Include="BattleNet\Clans\ClanMember.cs" />
+    <Compile Include="BattleNet\Clans\ClanMemberListEventArgs.cs" />
+    <Compile Include="BattleNet\Clans\ClanMemberRemovalResponse.cs" />
+    <Compile Include="BattleNet\Clans\ClanMembershipEventArgs.cs" />
+    <Compile Include="BattleNet\Clans\ClanMemberStatus.cs" />
+    <Compile Include="BattleNet\Clans\ClanMemberStatusEventArgs.cs" />
+    <Compile Include="BattleNet\Clans\ClanRank.cs" />
+    <Compile Include="BattleNet\Clans\ClanMemberRankChangeEventArgs.cs" />
+    <Compile Include="BattleNet\Clans\ClanRemovalResponseEventArgs.cs" />
+    <Compile Include="BattleNet\Clans\ClanResponseCode.cs" />
+    <Compile Include="BattleNet\Clans\LeftClanEventArgs.cs" />
+    <Compile Include="BattleNet\Stats\ClanProfile.cs" />
+    <Compile Include="BattleNet\Stats\ProfileLookupFailedEventArgs.cs" />
+    <Compile Include="BattleNet\Stats\WarcraftClanLadderRecord.cs" />
+    <Compile Include="BattleNet\Stats\WarcraftClanLadderType.cs" />
+    <Compile Include="BattleNet\Stats\WarcraftLadderRecord.cs" />
+    <Compile Include="BattleNet\Stats\WarcraftLadderType.cs" />
+    <Compile Include="BattleNet\Stats\WarcraftProfileEventArgs.cs" />
+    <Compile Include="BattleNet\Stats\WarcraftRaceRecord.cs" />
+    <Compile Include="BattleNet\WarcraftCommands.cs" />
+    <Compile Include="BattleNet\Stats\WarcraftProfile.cs" />
+    <Compile Include="BattleNet\Diablo2CharacterClass.cs" />
+    <Compile Include="BattleNet\Diablo2DifficultyLevel.cs" />
+    <Compile Include="BattleNet\Friends\FriendAddedEventArgs.cs" />
+    <Compile Include="BattleNet\Friends\FriendListReceivedEventArgs.cs" />
+    <Compile Include="BattleNet\Friends\FriendLocation.cs" />
+    <Compile Include="BattleNet\Friends\FriendMovedEventArgs.cs" />
+    <Compile Include="BattleNet\Friends\FriendRemovedEventArgs.cs" />
+    <Compile Include="BattleNet\Friends\FriendStatus.cs" />
+    <Compile Include="BattleNet\Friends\FriendUpdatedEventArgs.cs" />
+    <Compile Include="BattleNet\Friends\FriendUser.cs" />
+    <Compile Include="BattleNet\NewsEntry.cs" />
+    <Compile Include="BattleNet\PingType.cs" />
+    <Compile Include="BattleNet\Product.cs" />
+    <Compile Include="BattleNet\ProfileRecordKeyType.cs" />
+    <Compile Include="BattleNet\RecordKeyType.cs" />
+    <Compile Include="BattleNet\ServerNewsEventArgs.cs" />
+    <Compile Include="BattleNet\Stats\DefaultStats.cs" />
+    <Compile Include="BattleNet\Stats\Diablo2Stats.cs" />
+    <Compile Include="BattleNet\Stats\StarcraftStats.cs" />
+    <Compile Include="BattleNet\Stats\UserStats.cs" />
+    <Compile Include="BattleNet\Stats\Warcraft3IconRace.cs" />
+    <Compile Include="BattleNet\Stats\Warcraft3Stats.cs" />
+    <Compile Include="BattleNet\UserProfileEventArgs.cs" />
+    <Compile Include="BattleNet\UserProfileRequest.cs" />
+    <Compile Include="BattleNet\UserProfileKeys.cs" />
+    <Compile Include="ErrorType.cs" />
+    <Compile Include="EventDispatcher.cs" />
+    <Compile Include="InvokeHelper.cs" />
+    <Compile Include="MBNCSUtil\Util\CheckRevisionCompiler.cs" />
+    <Compile Include="MBNCSUtil\Util\CheckRevisionFormulaTracker.cs" />
+    <Compile Include="MBNCSUtil\Util\CheckRevisionPreloadTracker.cs" />
+    <Compile Include="MBNCSUtil\Util\StandardCheckRevisionImplementation.cs" />
+    <Compile Include="MBNCSUtil\Util\WardenCrypt.cs" />
+    <Compile Include="MBNCSUtil\Util\WardenRandom.cs" />
+    <Compile Include="MBNCSUtil\WardenEncryptionContext.cs" />
+    <Compile Include="ChannelFlags.cs" />
+    <Compile Include="ChannelListEventArgs.cs" />
+    <Compile Include="ChatEventArgs.cs" />
+    <Compile Include="ChatEventType.cs" />
+    <Compile Include="ChatMessageEventArgs.cs" />
+    <Compile Include="ClientCheckFailedEventArgs.cs" />
+    <Compile Include="ClientCheckFailureCause.cs" />
+    <Compile Include="Compatibility\WcfAttributes.cs" />
+    <Compile Include="CreationFailureReason.cs" />
+    <Compile Include="EnteredChatEventArgs.cs" />
+    <Compile Include="ErrorEventArgs.cs" />
+    <Compile Include="EventExceptionEventArgs.cs" />
+    <Compile Include="IBattleNetSettings.cs" />
+    <Compile Include="InformationEventArgs.cs" />
+    <Compile Include="LoginFailedEventArgs.cs" />
+    <Compile Include="LoginFailureReason.cs" />
+    <Compile Include="MBNCSUtil\Data\BniFileParser.cs" />
+    <Compile Include="MBNCSUtil\Data\BniIcon.cs" />
+    <Compile Include="MBNCSUtil\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="BattleNetClientResources.cs" />
+    <Compile Include="Net\BufferPool.cs" />
+    <Compile Include="BattleNet\ChannelJoinFlags.cs" />
+    <Compile Include="Net\CombinedPacketPriorityProvider.cs" />
+    <Compile Include="Net\ConnectCompletedEventArgs.cs" />
+    <Compile Include="Net\ConnectionBase.cs" />
+    <Compile Include="BncsPacketId.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="MBNCSUtil\BncsPacket.cs" />
+    <Compile Include="MBNCSUtil\BncsReader.cs" />
+    <Compile Include="MBNCSUtil\CdKey.cs" />
+    <Compile Include="MBNCSUtil\CheckRevision.cs" />
+    <Compile Include="MBNCSUtil\DataBuffer.cs" />
+    <Compile Include="MBNCSUtil\DataFormatter.cs" />
+    <Compile Include="MBNCSUtil\DataReader.cs" />
+    <Compile Include="MBNCSUtil\Data\Blp1ImageType.cs" />
+    <Compile Include="MBNCSUtil\Data\Blp1Parser.cs" />
+    <Compile Include="MBNCSUtil\Data\Blp2CompressionType.cs" />
+    <Compile Include="MBNCSUtil\Data\Blp2Parser.cs" />
+    <Compile Include="MBNCSUtil\Data\DXTCFormat.cs" />
+    <Compile Include="MBNCSUtil\Data\DxtCompressionType.cs" />
+    <Compile Include="MBNCSUtil\Data\ImageParser.cs" />
+    <Compile Include="MBNCSUtil\Data\LateBoundStormDllApi.cs" />
+    <Compile Include="MBNCSUtil\Data\MpqArchive.cs" />
+    <Compile Include="MBNCSUtil\Data\MpqException.cs" />
+    <Compile Include="MBNCSUtil\Data\MpqFileStream.cs" />
+    <Compile Include="MBNCSUtil\Data\MpqServices.cs" />
+    <Compile Include="MBNCSUtil\Data\Native.cs" />
+    <Compile Include="MBNCSUtil\Net\BnFtpRequestBase.cs" />
+    <Compile Include="MBNCSUtil\Net\BnFtpVersion1Request.cs" />
+    <Compile Include="MBNCSUtil\Net\BnFtpVersion2Request.cs" />
+    <Compile Include="MBNCSUtil\Net\DownloadStatusEventArgs.cs" />
+    <Compile Include="MBNCSUtil\NLS.cs" />
+    <Compile Include="MBNCSUtil\OldAuth.cs" />
+    <Compile Include="MBNCSUtil\Util\BigInteger.cs" />
+    <Compile Include="MBNCSUtil\Util\HeapPtr.cs" />
+    <Compile Include="MBNCSUtil\Util\LockdownCrev.cs" />
+    <Compile Include="MBNCSUtil\Util\LockdownHeap.cs" />
+    <Compile Include="MBNCSUtil\Util\LockdownSha1.cs" />
+    <Compile Include="MBNCSUtil\Util\Native.cs" />
+    <Compile Include="MBNCSUtil\Util\PeFileLoader.cs" />
+    <Compile Include="MBNCSUtil\Util\PeFileReader.cs" />
+    <Compile Include="MBNCSUtil\XSha1.cs" />
+    <Compile Include="Net\DefaultPacketPriorityProvider.cs" />
+    <Compile Include="Net\ThinProxiedConnectionBase.cs" />
+    <Compile Include="Plugins\DefaultCommandQueue.cs" />
+    <Compile Include="Plugins\ICommandQueue.cs" />
+    <Compile Include="Plugins\IBattleNetEvents.cs" />
+    <Compile Include="Plugins\IPacketPriorityProvider.cs" />
+    <Compile Include="Plugins\IProxiedRealConnection.cs" />
+    <Compile Include="Plugins\IProxyConnector.cs" />
+    <Compile Include="Plugins\IWardenModule.cs" />
+    <Compile Include="Plugins\ParseCallback.cs" />
+    <Compile Include="Priority.cs" />
+    <Compile Include="PriorityQueue.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\ImmediateCallerIsOfTypePermission.cs" />
+    <Compile Include="ServerChatEventArgs.cs" />
+    <Compile Include="SetMailRequestEventArgs.cs" />
+    <Compile Include="Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UserEventArgs.cs" />
+    <Compile Include="UserFlags.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MBNCSUtil\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BattleNet\Clans\NamespaceDocumentation.xml" />
+    <Content Include="BattleNet\Friends\NamespaceDocumentation.xml" />
+    <Content Include="BattleNet\NamespaceDocumentation.xml" />
+    <Content Include="BattleNet\Stats\NamespaceDocumentation.xml" />
+    <Content Include="license.txt" />
+    <Content Include="MBNCSUtil\Data\NamespaceComments.xml" />
+    <Content Include="MBNCSUtil\LICENSE.txt" />
+    <Content Include="MBNCSUtil\NamespaceComments.xml" />
+    <Content Include="MBNCSUtil\Net\NamespaceComments.xml" />
+    <Content Include="MBNCSUtil\Resources\StormLib.dll" />
+    <Content Include="MBNCSUtil\Resources\StormLib64.dll" />
+    <Content Include="NamespaceComments.xml" />
+    <Content Include="Net\NamespaceDocumentation.xml" />
+    <Content Include="Plugins\NamespaceComments.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Migrated rules for BNSharp.ruleset" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Util\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

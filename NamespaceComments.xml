@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<summary>
+    <introduction address="intro">
+        <para>
+            BN# is a utility library designed to simplify the creation of Battle.net client applications by
+            abstracting away the underlying connection protocols and allowing the user to worry about implementing
+            client functionality.  BN# can be as simple as you need, by dropping it into your project and creating
+            settings for it to use, or it can be incredibly flexible, allowing custom packet handling, parsing
+            priorities, and assigning priorities to event handlers.  It uses a sophisticated threading model
+            under the hood to allow peak performance without forcing the user to handle that directly.
+        </para>
+        <para>
+            BN# has a series of optimizations in place.  To prevent heap fragmentation, data buffers are
+            preallocated at fixed sizes and are reused over the lifetime of the application, allowing these buffers to
+            not be garbage-collected until the the clients using them are closed.
+        </para>
+        <para>
+            For more information about getting started with BN#, take a look at the
+            <a href="http://www.jinxbot.net/wiki/" target="_blank">JinxBot Wiki</a>, including the article
+            <a href="http://www.jinxbot.net/wiki/index.php?title=How_to_develop_a_Battle.net_client_in_10_minutes" target="_blank">How to develop a Battle.net client in 10 minutes</a>.
+        </para>
+        <autoOutline />
+    </introduction>
+
+    <para>
+        <b style="font-size: larger;">Release Notes - BN# Beta 3</b>
+    </para>
+    <section>
+        <title>New Features</title>
+        <content>
+            <list type="bullet">
+                <item>
+                    Support for proxying connections has been enabled.  Proxy support is not included directly in BN#; developers need to implement
+                    support for it themselves.  For more information, see the Wiki article <a href="http://www.jinxbot.net/wiki/index.php?title=Proxy_support_in_BNSharp" target="_blank">Proxy support in BN#</a>.
+                </item>
+                <item>Support for UTF-8 characters in chat messages has been added.</item>
+                <item>Built-in support has been added for ad messages.</item>
+                <item>
+                    Support has been added to set an account's e-mail address during login, or to change
+                    login credentials during the login process.  To do so, the client no longer automatically
+                    disconnects for invalid login credentials; instead, you can use the <b>ContinueLogin</b>
+                    method once the credentials have been changed.
+                </item>
+                <item>
+                    Some support for sanity checking has been implemented in the constructor for
+                    <b>BattleNetClient</b>.  It either will throw <see>FileNotFoundException</see> or
+                    <see>ConfigurationErrorsException</see>; for more information, see the documentation
+                    for the constructor.
+                </item>
+                <item>
+                    Command queuing now has support; to implement it, see the <see cref="BNSharp.Plugins.ICommandQueue">ICommandQueue interface</see>
+                    and the wiki article <a href="http://www.jinxbot.net/wiki/index.php?title=Command_queuing">Command queuing</a>.
+                </item>
+                <item>Added a method to support binary channel join.</item>
+                <item>Added support for joining a predefined home channel upon logging in, instead of joining the default product channel.</item>
+                <item>
+                    The ability to change the server on ConnectionBase without reinstantiating the class has been added.  To use it, an overload
+                    of the Connect method has been added, accepting a name (or IP) and a port.
+                </item>
+                <item>
+                    Support for Warcraft III profiles and clan information lookups has been added.  It is
+                    still experimental but generally OK.
+                </item>
+                <item>
+                    Added a new field to the PingType enumeration, ReplyBeforeVersioning.  When enabled, this will cause a BattleNetClient to wait for
+                    500ms after the arrival of 0x50 (AuthInfo) for a Ping packet to arrive, and will reply to that first.  This will most likely offer faster
+                    ping times as the process will not have to wait for the revision check to complete.
+                </item>
+                <item>
+                    The ErrorEventArgs class now has a new member, the Reason property.  The Reason property exposes an enumeration of type ErrorType
+                    that indicates to the program the reason for the disconnect, allowing developers to handle the error as they see fit.
+                </item>
+                <item>
+                    A new class, <see cref="T:BNSharp.BattleNet.Gateway">Gateway</see>, has been added to support information about
+                    a Battle.net gateway, including its interpretations of username suffixes.
+                </item>
+                <item>
+                    The way in which version-checking has been implemented has been redone (part of MBNCSUtil).  BN# now dynamically
+                    compiles the revision check formula into executable code.  This change only affects non-Lockdown clients.  For more
+                    information, see <see cref="M:BNSharp.MBNCSUtil.CheckRevision.AlwaysUseSlowCheck">CheckRevision.AlwaysUseSlowCheck</see>.
+                </item>
+                <item>
+                    BN# now validates some of the settings provided to it during initialization of a new
+                    <see cref="M:BNSharp.BattleNet.BattleNetClient..ctor(BNSharp.IBattleNetSettings">BattleNetClient</see>.  
+                    This initialization checks a number of components and, if any are erroneous, will throw
+                    a <see cref="M:BNSharp.BattleNetSettingsErrorsException">BattleNetSettingsErrorsException</see>, 
+                    reporting all detected errors.
+                </item>
+            </list>           
+        </content>
+    </section>
+
+    <section>
+        <title>Breaking Changes</title>
+        <content>
+            <alert type="important">
+                <para>
+                    The following changes have been made to BN# between Beta 2 and Beta 3 that will require code changes.  If you are
+                    using the latest source code, by now you have probably already had to rework your code to deal with these changes.
+                </para>
+            </alert>
+            <list type="bullet">
+                <item>
+                    The <see cref="T:BNSharp.BattleNet.BattleNetClient">BattleNetClient</see> class has been moved out of the <see cref="N:BNSharp.Net">BNSharp.Net</see>
+                    namespace into the more-appropriate <see cref="N:BNSharp.BattleNet">BNSharp.BattleNet</see> namespace.
+                </item>
+                <item>
+                    The <see cref="T:BNSharp.IBattleNetSettings">IBattleNetSettings</see> interface has gained the <see cref="M:BNSharp.IBattleNetSettings.HomeChannel">HomeChannel property</see>.
+                    Implementing classes will need to provide a concrete implementation, even if it is simply to return a null value.  In addition, the
+                    <see cref="M:BNSharp.IBattleNetSettings.Server">Server</see> and <see cref="M:BNSharp.IBattleNetSettings.Port">Port properties</see> have been
+                    deprecated in favor of using the <see cref="M:BNSharp.IBattleNetSettings.Gateway">Gatway property</see>.
+                </item>
+            </list>
+
+        </content>
+    </section>
+
+    <section>
+        <title>Non-Breaking Changes/Bug Fixes</title>
+        <content>
+            <list type="bullet">
+                <item>BN# no longer forces a disconnect when the server fails to prove that it is a legitimate server.</item>
+                <item>
+                    Fixed an issue in which a disconnect (for instance, due to Warden or certain instances when a CD key was in use) would not bubble the
+                    disconnecting event.
+                </item>
+            </list>
+        </content>
+    </section>
+
+    <section>
+        <title>Legacy Release Notes</title>
+        <content>
+            <para>
+                <b style="font-size: larger;">Release Notes - BN# Beta 2</b>
+            </para>
+            <para>
+                <b>New Features</b>
+            </para>
+            <list type="bullet">
+                <item>
+                    Support for Warden has been partially implemented in the BNSharp.MBNCSUtil namespace in the class
+                    <see cref="BNSharp.MBNCSUtil.WardenEncryptionContext">WardenEncryptionContext</see>.  The end-user is still required to implement the
+                    <see cref="BNSharp.Plugins.IWardenModule">IWardenModule</see> interface.  However, developing the implementation
+                    should be significantly improved.  This contribution was a joint effort by Warrior[x86] and MyndFyre.
+                </item>
+                <item>
+                    Several changes that were related to Warden have been implemented and rolled into the BattleNetClient class.  These issues did not
+                    necessarily prevent correct implementation of Warden, but they did not follow the documentation and were corrected in this release.
+                </item>
+                <item>Corrected an issue that caused an exception on the parsing thread during friend updates on Starcraft and Brood War.</item>
+            </list>
+            <para>
+                <b>What's coming for Beta 3</b>
+            </para>
+            <list type="bullet">
+                <item>All remaining internal connection status strings will be removed into the localizable file format.</item>
+            </list>
+            <para>
+                <b style="font-size: larger;">Release Notes - BN# Beta 1</b>
+            </para>
+            <para>
+                <b>New Features</b>
+            </para>
+            <list type="bullet">
+                <item>Most appropriate classes has have WCF attributes applied to them and can be serialized with a DataContractSerializer. </item>
+                <item>Added the ability to request user profiles.</item>
+                <item>Friends support was added in this release</item>
+                <item>BN# exposes a new event called EventExceptionThrown. The purpose of this event is to allow a host application to know when a specific plugin or feature set is causing an error and handle it gracefully. JinxBot will handle this condition, for example, by allowing the user to unload plugins on-demand if they are causing many exceptions. </item>
+                <item>Additional clan support was added; BN# now understands and supports events for clan functions such as formation, chieftan change, new formation searching, and disband. Corresponding new functions include BeginClanCandidateSearch, InviteUsersToNewClan, RespondToNewClanInvitation, DisbandClan, and DesignateClanChieftan. Corresponding new events include ClanCandidatesSearchCompleted, ClanFormationCompleted, ClanFormationInvitationReceived, ClanDisbandCompleted, ClanInvitationReceived, ClanInvitationResponseReceived, ClanRemovalResponse, LeftClan, and ClanChangeChieftanCompleted. </item>
+                <item>
+                    A new interface is supported for the ordering of packet parsing priority. This would allow, for example, a moderation plugin to require that ChatEvent packets are processed first (to receive UserJoined events). To support this functionality, implement the IPacketPriorityProvider interface in the BNSharp.Plugins namespace, and call BattleNetClient.RegisterCustomPacketPriorities/UnregisterCustomPacketPriorities.
+                </item>
+                <item>A demonstration project of a JinxBot plugin for adding MCP (Realm Server) support to BN# is available in the repository. It obeys some JinxBot contracts, but extends BN# to include handling for realm servers. </item>
+                <item>A new method was added to BattleNetClient called CreateAccount.  If the login process fails, you can attempt to create the account by calling CreateAccount; it will use the information provided in the Settings object (this information can be changed dynamically at run-time). CreateAccount will result in the AccountCreated or AccountCreationFailed events to be raised; if AccountCreated is raised, the client will automatically log in.</item>
+                <item>The client no longer automatically disconnects because of an account login failure. (CD key or versioning failure still results in an automatic disconnect). </item>
+                <item>To support the no auto-disconnect policy, a new method was added to BattleNetClient called ContinueLogin(). This method allows the user to change the Settings object to modify the username and password of the desired login and then begin logging in again. </item>
+            </list>
+            <para>
+                <b>Breaking Changes</b>
+            </para>
+            <list type="bullet">
+                <item>
+                    By default, BNSharp requires support for .NET 3.0 because it references System.Runtime.Serialization version 3.0.0.0. For details on compiling without support for WCF data contract serialization, see the article <a href="http://www.jinxbot.net/wiki/index.php?title=Compiling_BNSharp_for_.NET_2.0" target="_blank">Compiling BN# for .NET 2.0.</a>
+                </item>
+                <item>IBattleNetSettings now requires a new property, PingType, which allows the connection to attempt to drive a 0ms, -1ms, or standard ping type. Old code will need to add this property to the IBattleNetSettings implementation class. </item>
+                <item>Users now automatically have a Stats property that contains a reference to a class derived from UserStats. This change is breaking and will impact code written for an older CTP release. If using the latest code, this will be compatible with handling code from r15 or newer. </item>
+                <item>The LoginFailed event is no longer prototyped as EventHandler but LoginFailedEventHandler. The LoginFailedEventArgs class contains contextual information about the reason for login failure. </item>
+            </list>
+            <para>
+                <b>Non-Breaking Changes</b>
+            </para>
+            <list type="bullet">
+                <item>BN# includes the attributes used for data contract serialization as internal, stub attributes that will enable cross-versioning compatbility. For more information, see the article on compiling for .NET 2.0. This also removes the #if !NET_2_0 conditionals wrapping the attribute declarations throughout the data code. </item>
+                <item>BN# now guarantees events are fired in the correct order by creating additional threads and event queues. This should increase the reliability of the order of events when joining a channel, for example. (Previously, joining a channel could cause a user to be listed as joined before the ChannelJoined event fired due to a race condition, which could cause the user to be added to the user list and then removed). </item>
+                <item>Events on a BattleNetClient now have dedicated threads for Normal- and Low-priority event handlers. High-priority events are still executed on the Parse() loop. All Normal-priority event handlers are executed before outstanding Low-priority event handlers are executed. </item>
+                <item>Added a new Position property to the MBNCSUtil DataReader class.</item>
+                <item>Modified the non-Lockdown version of CheckRevision to use approximately 25mb less of memory allocations and reallocations, saving 3-4 gen-0 garbage collections.  The Lockdown version of CheckRevision uses significantly less memory and will be updated in a future version of BN#.</item>
+                <item>Began adding namespace documentation.</item>
+            </list>
+            <para>
+                <b>Bug Fixes</b>
+            </para>
+            <list type="bullet">
+                <item>Corrected a defect in which a Warcraft 3 statstring would be incorrectly parsed due to a server defect.</item>
+                <item>Corrected the IBattleNetEvents interface and the EventSink interface to expose all events.</item>
+                <item>
+                    Comments had been made that the Disconnected event did not always fire correctly.  I believe I have corrected this defect.  If you see it happen, please report it in the <a href="http://www.jinxbot.net/forum/" target="_blank">JinxBot Forums</a>.
+                </item>
+            </list>
+        </content>
+    </section>
+
+</summary>

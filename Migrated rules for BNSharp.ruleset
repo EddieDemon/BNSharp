@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Migrated rules for BNSharp.ruleset" Description="This rule set was created from the CodeAnalysisRules property for the &quot;Debug (Any CPU)&quot; configuration in project &quot;F:\Projects\jinxbot\trunk\development\projects\BNSharp\BNSharp.csproj&quot;." ToolsVersion="10.0">
+  <IncludeAll Action="Warning" />
+  <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <Rule Id="CA1003" Action="None" />
+    <Rule Id="CA1031" Action="None" />
+    <Rule Id="CA1054" Action="None" />
+    <Rule Id="CA1055" Action="None" />
+    <Rule Id="CA1056" Action="None" />
+    <Rule Id="CA1057" Action="None" />
+    <Rule Id="CA1600" Action="None" />
+    <Rule Id="CA1601" Action="None" />
+    <Rule Id="CA1701" Action="None" />
+    <Rule Id="CA1702" Action="None" />
+    <Rule Id="CA1703" Action="None" />
+    <Rule Id="CA1704" Action="None" />
+    <Rule Id="CA1709" Action="None" />
+    <Rule Id="CA1711" Action="None" />
+    <Rule Id="CA1726" Action="None" />
+  </Rules>
+</RuleSet>
