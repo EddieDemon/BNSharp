@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Comments Namespace="BNSharp.Net">
+    <summary>
+        The BNSharp.Net namespace contains types that facilitate client connections.  Specifically, the <see>BattleNetClient</see>
+        class may be used as a highly-contained client connection to Battle.net, whereas a <see>ConnectionBase</see> may be more appropriate for someone
+        interested in implementing a new client protocol.
+    </summary>
+</Comments>

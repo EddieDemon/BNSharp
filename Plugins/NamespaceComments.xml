@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<summary>
+    <para>
+        The BNSharp.Plugins namespace contains interfaces that can be implemented to extend intrinsic BN# functionality.
+        By implementing these interfaces and then registering the appropriate objects with BN#, many changes to the 
+        core functionality could be made, such as adding support for realm server connections, changing the login
+        sequence, or implementing Warden.
+    </para>
+    <para>
+        BN# can be instructed to parse packets at different priorities.  For example, supposing a moderation client 
+        wants to handle User Joined events immediately.  By implementing <see cref="BNSharp.Plugins.IPacketPriorityProvider">IPacketPriorityProvider</see>, 
+        your client can register custom priorities for ChatEvent packets, which permit them to be handled sooner when multiple 
+        packets are in the parsing queue.  They can also be parsed manually by registering a custom 
+        <see cref="BNSharp.Plugins.ParseCallback">ParseCallback</see>.  Custom parsers are expected to behave by 
+        maintaining their references in the chain and calling handlers higher up the chain when appropriate.
+    </para>
+    <para>
+        For more information augmenting BN#'s functionality with extensions, take a look at the
+        <a href="http://www.jinxbot.net/wiki/" target="_blank">JinxBot Wiki</a>, including the article
+        <a href="http://www.jinxbot.net/wiki/index.php?title=Custom_packet_handling_with_BNSharp" target="_blank">Custom packet handling with BN#</a>.
+    </para>
+    <seealso cref="BNSharp.BattleNet.BattleNetClient" />
+</summary>

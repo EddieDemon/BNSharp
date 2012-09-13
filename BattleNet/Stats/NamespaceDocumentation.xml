@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Comments Namespace="BNSharp.BattleNet.Stats">
+    <summary>
+        The BNSharp.BattleNet.Stats namespace contains types to facilitate the parsing of user data regarding their statistics such as 
+        Battle.net stat strings.  To parse a stat string, see the <see cref="BNSharp.BattleNet.StatsUserStats.Parse">UserStats.Parse</see> method,
+        which returns an object based on the client in use by the user.
+    </summary>
+</Comments>

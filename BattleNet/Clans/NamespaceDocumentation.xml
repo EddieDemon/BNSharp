@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Comments Namespace="BNSharp.BattleNet.Clans">
+    <summary>
+        The BNSharp.BattleNet.Clans namespace contains types that have a high degree of domain specificity to Battle.net clans.
+    </summary>
+</Comments>
