@@ -985,6 +985,8 @@ namespace BNSharp.BattleNet
                     CloseWithError(Strings.LoginProofClientProofFailed, ErrorType.InvalidUsernameOrPassword);
                     break;
                 case 14:
+                    // NOTE: Since they ask us to register an email address... - MusicDemon 19-Sept-2012
+                    HandleSetMail(data);
                     if (!m_nls.VerifyServerProof(m2))
                     {
                         OnError(new ErrorEventArgs(ErrorType.LoginServerProofFailed, Strings.LoginProofServerProofFailed, false));
